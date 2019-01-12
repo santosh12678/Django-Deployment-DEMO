@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Index</title>
+  </head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <body>
+
+    <nav class="navbar navbar-expand-sm bg-blue">
+      <div class="container">
+        <ul class = "nav navbar nav">
+          <li class="navbar-brand"> <a href="{%url 'index'%}">DJANGO HOME</a></li>
+          <li class="nav-link"> <a href="{%url 'admin:index'%}">ADMIN</a> </li>
+          <li class="nav-link"><a href="{%url 'learning_users:register'%}">REGISTER</a></li>
+
+          {% if user.is_authenticated %}
+            <li class="nav-link"> <a href="{% url 'logout' %}">Logout</a> </li>
+          {% else %}
+            <li class="nav-link"> <a href="{% url 'learning_users:login' %}">Login</a> </li>
+          {% endif %}
+
+
+
+
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      {% block body_block %}
+      {% endblock %}
+
+    </div>
+
+
+  </body>
+</html>
